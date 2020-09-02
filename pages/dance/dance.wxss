@@ -1,0 +1,5 @@
+/* pages/dance/dance.wxss */
+
+.directive {
+  letter-spacing: 5px;
+}

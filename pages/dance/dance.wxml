@@ -1,0 +1,8 @@
+<!--pages/dance/dance.wxml-->
+<view class="container">
+  <view wx:if="{{isGameStart}}" class="directive">{{currentDir}}</view>
+  <view wx:if="{{isGameStart}}">
+    <input focus="{{focus}}" type="text" value="{{inputDir}}" placeholder="请输入..." bindconfirm="resultDir"
+      confirm-hold />
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<!--pages/over/over.wxml-->
+<view class="container">
+  <view>
+    答对:{{rightCount}}
+    打错:{{errorCount}}
+  </view>
+</view>
