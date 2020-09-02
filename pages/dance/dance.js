@@ -9,12 +9,16 @@ Page({
     isGameStart: true,
     rightCount: 0,
     errorCount: 0,
+    ifRight: -1,
     focus: false,
     inputDir: "",
     userLevel: 3
   },
   onLoad() {
     this.getDirective();
+    this.setData({
+      focus: true
+    })
   },
   /**
    * 获取当前指令
@@ -23,7 +27,7 @@ Page({
   getDirective(e) {
     var level1 = ['↑', '↓', '←', '→'];
     var arr = "";
-    var userLevel = this.data.rightCount % 3 == 0 ? this.data.rightCount + 1 : 3;
+    var userLevel = this.data.rightCount > 3 ? this.data.rightCount + 1 : 3;
     for (let i = 0; i < userLevel; i++) {
       arr += level1[Math.floor(Math.random() * level1.length)];
     }
@@ -45,11 +49,13 @@ Page({
   statistical(inputValue) {
     if (inputValue === this.data.currentDir) {
       this.setData({
-        rightCount: this.data.rightCount + 1
+        rightCount: this.data.rightCount + 1,
+        ifRight: 1
       })
     } else {
       this.setData({
-        errorCount: this.data.errorCount + 1
+        errorCount: this.data.errorCount + 1,
+        ifRight: 0
       })
     }
   },
