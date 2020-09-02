@@ -17,5 +17,18 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
+
+.btn_begin{
+  margin-bottom: 5px;
+}
+
+.explian {
+  font-size: 12px;
+}
+.explian-text_note{
+  color: #d1d1d1;
+}
+
