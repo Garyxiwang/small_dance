@@ -17,3 +17,15 @@
 .timer {
   color: #d1d1d1;
 }
+
+.dance-directive_normal {
+  color: #6C6C6C;
+}
+
+.dance-directive_success {
+  color: #02C874;
+}
+
+.dance-directive_error {
+  color: #EA0000;
+}

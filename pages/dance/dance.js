@@ -5,7 +5,7 @@ Page({
    * Page initial data
    */
   data: {
-    currentDir: "",
+    currentDir: [],
     isGameStart: true,
     rightCount: 0,
     errorCount: 0,
@@ -16,25 +16,29 @@ Page({
     enumDir: ['↑', '↓', '←', '→'], //'↖', '↗', '↙', '↘'
     allowError: 3,
     countdown: 3,
-    timer: null
+    timer: null,
+    isClock: false
   },
-  onLoad() {
+  onLoad(options) {
     this.getDirective();
-    var code = wx.login();
-    console.log(code);
+    this.data.isClock = options.isClock ? true : false;
+    console.log('this.data.isClock=', this.data.isClock);
   },
   onReady() {
-    console.log(this.data.focus)
+
   },
   /**
    * 获取当前指令
    * @param {*} e 
    */
   getDirective(e) {
-    var arr = "";
+    var arr = [];
     var userLevel = this.data.rightCount < 10 ? this.data.rightCount + 1 : 10;
     for (let i = 0; i < userLevel; i++) {
-      arr += this.data.enumDir[Math.floor(Math.random() * this.data.enumDir.length)];
+      arr.push({
+        str: this.data.enumDir[Math.floor(Math.random() * this.data.enumDir.length)],
+        status: 'normal'
+      });
     }
     this.setData({
       currentDir: arr,
@@ -44,8 +48,11 @@ Page({
     })
     console.log(this.data.currentDir);
     //计时器
-    clearInterval(this.data.timer);
-    this.clock();
+    if (this.data.isClock) {
+      clearInterval(this.data.timer);
+      this.clock();
+    }
+
   },
   /**
    * 替换字符
@@ -55,23 +62,7 @@ Page({
     return str.toUpperCase().replace(/W/g, '↑').replace(/S/g, '↓').replace(/A/g, '←').replace(/D/g, '→')
       .replace(/Q/g, '↖').replace(/E/g, '↗').replace(/Z/g, '↙').replace(/C/g, '↘');
   },
-  /**
-   * 统计
-   * @param {*} inputValue 
-   */
-  statistical(inputValue) {
-    if (inputValue === this.data.currentDir) {
-      this.setData({
-        rightCount: this.data.rightCount + 1,
-        ifRight: 1
-      })
-    } else {
-      this.setData({
-        errorCount: this.data.errorCount + 1,
-        ifRight: 0
-      })
-    }
-  },
+
   /**
    * 计时器
    */
@@ -93,16 +84,54 @@ Page({
       }
     }, 1000);
   },
+  validationStr(str) {
+    console.log("validationStr=", str);
+    var currentDirTemp = this.data.currentDir;
+    for (const s in str) {
+      if (currentDirTemp[s].str === str[s]) {
+        currentDirTemp[s].status = 'success';
+      } else {
+        currentDirTemp[s].status = 'error';
+      }
+    }
+    console.log('currentDirTemp=', currentDirTemp);
+    this.setData({
+      currentDir: currentDirTemp
+    })
+  },
   /**
    * 输入转换
    * @param {*} e 
    */
   transformInputValue(e) {
-    console.log('inputValue:', e.detail.value);
     this.setData({
       inputDir: this.replaceChar(e.detail.value)
+    }, (res) => {
+      console.log('transformInputValue=', this.data.inputDir);
+      this.validationStr(this.data.inputDir)
     })
-
+  },
+  /**
+   * 统计
+   * @param {*} inputValue 
+   */
+  statistical(inputValue) {
+    var currentDirStr = "";
+    // 转换字符串，今天输入比较
+    this.data.currentDir.map(dir => {
+      currentDirStr += dir.str;
+    })
+    if (inputValue === currentDirStr) {
+      this.setData({
+        rightCount: this.data.rightCount + 1,
+        ifRight: 1
+      })
+    } else {
+      this.setData({
+        errorCount: this.data.errorCount + 1,
+        ifRight: 0
+      })
+    }
   },
   /**
    * 匹配结果
@@ -111,7 +140,7 @@ Page({
   resultDir(e) {
     //获取输入信息
     var inputValue = e.detail.value !== "" ? this.replaceChar(e.detail.value) : "";
-    console.log(inputValue);
+    console.log("inputValue=", inputValue);
     //统计正确率
     this.statistical(inputValue);
     //是否结束游戏

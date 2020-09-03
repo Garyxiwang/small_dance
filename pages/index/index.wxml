@@ -10,7 +10,8 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <button class="btn_begin" plain="true" type="primary" bindtap="gameStart" data-level="3">开始</button>
+  <button class="btn_begin" plain="true" type="primary" bindtap="gameStart">开始</button>
+  <button class="btn_begin" plain="true" type="primary" bindtap="gameTestStart">练习模式</button>
   <view class="explian" style="flex-direction:column;">
     <view class="explian-text_note">按键：w:'↑'，s:'↓'，a:'←'，d:'→'</view>
   </view>

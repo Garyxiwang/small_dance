@@ -1,7 +1,9 @@
 <!--pages/dance/dance.wxml-->
-<view class="container">
+<view class="container dance">
   <view class="title">请根据指令输入</view>
-  <view wx:if="{{isGameStart}}" class="directive">{{currentDir}}</view>
+  <view wx:if="{{isGameStart}}" class="directive">
+    <p wx:for="{{currentDir}}" wx:key="index" class="dance-directive_{{item.status}}">{{item.str}}</p>
+  </view>
   <icon wx:if="{{ifRight===1}}" class="icon-small" type="success_no_circle" size="23"></icon>
   <icon wx:if="{{ifRight===0}}" class="icon-small" type="cancel" size="23"></icon>
 

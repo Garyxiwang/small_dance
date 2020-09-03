@@ -53,7 +53,12 @@ Page({
     })
   },
   gameStart() {
-    wx.redirectTo({
+    wx.navigateTo({
+      url: '/pages/dance/dance?isClock=1',
+    })
+  },
+  gameTestStart() {
+    wx.navigateTo({
       url: '/pages/dance/dance',
     })
   }
