@@ -1,1 +1,7 @@
 /* pages/over/over.wxss */
+.right{
+  color: aquamarine;
+}
+.error{
+  color: brown;
+}

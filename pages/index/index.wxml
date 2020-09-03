@@ -11,7 +11,7 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <button class="btn_begin" plain="true" type="primary" bindtap="gameStart" data-level="3">开始</button>
-  <view class="explian">
-    <text class="explian-text_note">说明：根据玩家等级开始游记，请点击开始</text>
+  <view class="explian" style="flex-direction:column;">
+    <view class="explian-text_note">按键：w:'↑'，s:'↓'，a:'←'，d:'→'</view>
   </view>
 </view>

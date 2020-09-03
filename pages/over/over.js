@@ -5,14 +5,18 @@ Page({
    * Page initial data
    */
   data: {
-
+    rightCount: 0,
+    errorCount: 0
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    this.setData({
+      rightCount: options.rightCount,
+      errorCount: options.errorCount
+    })
   },
 
   /**
@@ -62,5 +66,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  restart() {
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
   }
 })

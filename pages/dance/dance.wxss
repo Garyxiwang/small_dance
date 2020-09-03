@@ -1,16 +1,19 @@
 /* pages/dance/dance.wxss */
 .title {
   margin-bottom: 10px;
-  background: -webkit-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
-  color: transparent;
-  /*设置字体颜色透明*/
-  -webkit-background-clip: text;
-  /*背景裁剪为文本形式*/
-  animation: ran 10s linear infinite;
 }
 
 .directive {
   font-size: 20px;
   letter-spacing: 5px;
   color: #8c888b;
+}
+
+.content {
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+.timer {
+  color: #d1d1d1;
 }

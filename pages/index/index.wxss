@@ -19,16 +19,24 @@
 .usermotto {
   margin-top: 50px;
   margin-bottom: 20px;
+  background: -webkit-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
+  color: transparent;
+  /*设置字体颜色透明*/
+  -webkit-background-clip: text;
+  /*背景裁剪为文本形式*/
+  animation: ran 10s linear infinite;
 }
 
-.btn_begin{
+.btn_begin {
   margin-bottom: 5px;
 }
 
 .explian {
   font-size: 12px;
 }
-.explian-text_note{
-  color: #d1d1d1;
-}
 
+.explian-text_note {
+  color: #d1d1d1;
+  margin-bottom: 5px;
+  font-size: 20PX;
+}

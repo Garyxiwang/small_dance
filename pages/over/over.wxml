@@ -1,7 +1,10 @@
 <!--pages/over/over.wxml-->
 <view class="container">
   <view>
-    答对:{{rightCount}}
-    打错:{{errorCount}}
+    答对:<em class="right">{{rightCount}}</em>
+    打错:<em class="error">{{errorCount}}</em>
+  </view>
+  <view>
+    <button class="btn_begin" plain="true" type="primary" bindtap="restart">重新开始</button>
   </view>
 </view>

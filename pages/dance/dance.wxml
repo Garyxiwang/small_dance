@@ -1,11 +1,17 @@
 <!--pages/dance/dance.wxml-->
 <view class="container">
-  <view class="title">表演开始</view>
+  <view class="title">请根据指令输入</view>
   <view wx:if="{{isGameStart}}" class="directive">{{currentDir}}</view>
-  <view wx:if="{{isGameStart}}">
-    <input focus="{{focus}}" type="text" value="{{inputDir}}" placeholder="请输入..." bindconfirm="resultDir"
-      confirm-hold />
-    <icon wx:if="{{ifRight===1}}" class="icon-small" type="success_no_circle" size="23"></icon>
-    <icon wx:if="{{ifRight===0}}" class="icon-small" type="cancel" size="23"></icon>
+  <icon wx:if="{{ifRight===1}}" class="icon-small" type="success_no_circle" size="23"></icon>
+  <icon wx:if="{{ifRight===0}}" class="icon-small" type="cancel" size="23"></icon>
+
+  <view wx:if="{{isGameStart}}" class="content">
+    <input auto-focus type="text" value="{{inputDir}}" placeholder="请输入..." bindconfirm="resultDir"
+      bindinput="transformInputValue" confirm-hold />
+  </view>
+
+
+  <view class="timer">
+    倒计时：{{countdown}}s
   </view>
 </view>
