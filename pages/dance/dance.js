@@ -48,10 +48,10 @@ Page({
     })
     console.log(this.data.currentDir);
     //计时器
-    if (this.data.isClock) {
+    // if (this.data.isClock) {
       clearInterval(this.data.timer);
       this.clock();
-    }
+    // }
 
   },
   /**
